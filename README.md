@@ -69,10 +69,12 @@ Generate secret key
 TwoFactor::generateKey();
 ```
 
-Generate QR Code
+Generate QR Code for synchronize in your Google Authentica
 ```
 TwoFactor::generateQrCode(['mail' => 'iago.effting@gmail.com', 'key' => '53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5'])
 ```
+Return Example: https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2FiNeural%3Aiago2222marina%40gmail.com%3Fsecret%3D53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5%26issuer%3DiNeural
+
 
 
 
