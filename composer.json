@@ -1,0 +1,20 @@
+{
+    "name": "iago-effting/two-factor-api",
+    "description": "Provides two-factor authenticaton for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Iago Effting",
+            "email": "iago.effting@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "IagoEffting\\TwoFactorAPI\\" : "src/"
+      }
+    },
+    "require": {
+      "illuminate/support": "~5",
+      "pragmarx/google2fa": "*"
+    }
+}
