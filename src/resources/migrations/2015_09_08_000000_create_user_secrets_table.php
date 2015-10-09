@@ -15,7 +15,7 @@ class CreateUserSecretsTable extends Migration
     Schema::create('user_secrets', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('user_id');
-      $table->string('secret')->index();
+      $table->string('key')->index();
       $table->timestamps();
     });
   }

@@ -22,8 +22,6 @@ trait HasTwoFactor
     $secret_length = config('twofactor.secret_length');
     $secret = $google2fa->generateSecretKey($secret_length);
 
-    $this->secret = $secret;
-
     return $secret;
   }
 

@@ -19,12 +19,12 @@ class Secret extends Model
    *
    * @var array
    */
-  protected $fillable = ['user_id', 'secret'];
+  protected $fillable = ['key'];
 
   public function user()
   {
-    $roleModel = config('defender.role_model', 'Artesaos\Defender\Role');
-    $this->belongsTo('User');
+    $userModel = config('twofactor.user_model');
+    return $this->belongsTo($userModel);
   }
 
 }
