@@ -3,6 +3,7 @@
 namespace IagoEffting\TwoFactorAPI\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use IagoEffting\TwoFactorAPI\Facades\TwoFactor;
 use PragmaRX\Google2FA\Google2FA;
 
 class TwoFactorApiServiceProvider extends ServiceProvider
@@ -15,16 +16,17 @@ class TwoFactorApiServiceProvider extends ServiceProvider
    */
   public function register()
   {
-    $this->app->bind('IagoEffting\TwoFactorAPI', function($app){
-      return new TwoFactorAPI;
-    });
-    $this->app->bind('PragmaRX\Google2FA\Contracts\Google2FA', function($app){
+
+    $this->app->bind('PragmaRX\Google2FA\Contracts\Google2FA', function(){
       return new Google2FA();
+    });
+
+    $this->app->bind('TwoFactor', function(){
+      return new \IagoEffting\TwoFactorAPI\TwoFactor();
     });
 
     $loader = \Illuminate\Foundation\AliasLoader::getInstance();
     $loader->alias('Google2FA', 'PragmaRX\Google2FA\Vendor\Laravel\Facade');
-
   }
 
   public function boot()

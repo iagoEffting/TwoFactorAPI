@@ -24,9 +24,11 @@ or manually
 ```
 
 ### 2. Provider
-Add Service Provider to your `config/app.php`
+Add Service Provider and Facade to your `config/app.php`
 ````
 IagoEffting\TwoFactorAPI\Providers\TwoFactorApiServiceProvider::class
+...
+'TwoFactor'  => \IagoEffting\TwoFactorAPI\Facades\TwoFactor::class
 ```
 ### 3. User Class
 On your User class, add the trait IagoEffting\TwoFactorAPI\Traits\HasTwoFacto to enable the creation of secret key:
@@ -58,6 +60,18 @@ php artisan vendor:publish
 Run migrate
 ````
 php artisan migrate
+```
+
+## Usage
+### Facade
+Generate secret key
+```
+TwoFactor::generateKey();
+```
+
+Generate QR Code
+```
+TwoFactor::generateQrCode(['mail' => 'iago.effting@gmail.com', 'key' => '53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5'])
 ```
 
 
