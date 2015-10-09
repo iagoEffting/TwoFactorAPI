@@ -1,6 +1,8 @@
 # TwoFactorAPI
 Two Factor API is a library to improve security authentication APIs. We use the system OTP (one-time password) a password that expires after some time. This implementation uses Google Autenticator to generate passwords in your mobile application.
 
+How does it work: https://www.google.com/landing/2step/#tab=how-it-works
+
 ## Requirements
 - PHP 5.4+
 
