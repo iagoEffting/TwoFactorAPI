@@ -3,6 +3,11 @@
 
 return [
   /*
+   * This name will appear on Google Autenticator app on your phone
+   */
+  'company_name' => 'Name of You Company',
+
+  /*
    * Default Secret model used by TwoFactor.
    */
   'secret_model' => 'IagoEffting\TwoFactorAPI\Secret',

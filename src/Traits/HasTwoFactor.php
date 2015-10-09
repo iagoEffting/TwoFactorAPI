@@ -25,4 +25,19 @@ trait HasTwoFactor
     return $secret;
   }
 
+  public function generateQRCode()
+  {
+    $companyName = config('twofactor.company_name');
+    $google2fa = app()->make('PragmaRX\Google2FA\Contracts\Google2FA');
+
+    $urlQr = $google2fa->getQRCodeGoogleUrl(
+      $companyName,
+      $this->email,
+      $this->secret->key
+    );
+
+    return $urlQr;
+
+  }
+
 }
