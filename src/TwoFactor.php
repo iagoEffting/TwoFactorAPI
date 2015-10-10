@@ -12,8 +12,8 @@ class TwoFactor
   public function generateKey()
   {
     $secret_length = config('twofactor.secret_length');
-    $google2fa = app()->make('PragmaRX\Google2FA\Contracts\Google2FA');
-    $secret = $google2fa->generateSecretKey($secret_length);
+    $google2fa     = app()->make('PragmaRX\Google2FA\Contracts\Google2FA');
+    $secret        = $google2fa->generateSecretKey($secret_length);
 
     return $secret;
   }
