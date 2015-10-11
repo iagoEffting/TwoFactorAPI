@@ -5,7 +5,7 @@ return [
   /*
    * This name will appear on Google Autenticator app on your phone
    */
-  'company_name' => 'Name of You Company',
+  'company_name' => 'Name of Your Company',
 
   /*
    * Default Secret model used by TwoFactor.
