@@ -30,6 +30,7 @@ class TwoFactorAuthenticate
     $user = $this->auth->toUser($request->input('token'));
 
     // Validar TwoFactor
+    var_dump($this->twoFactor->isEnable($user));
     if ($this->twoFactor->isEnable($user)) {
       if (!$this->twoFactor->verifyKey($user)) {
         $data = array(

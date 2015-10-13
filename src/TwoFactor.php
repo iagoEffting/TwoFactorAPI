@@ -58,7 +58,7 @@ class TwoFactor
    */
   public function isEnable($user)
   {
-    if (isset($user->secret()->key))
+    if (isset($user->secret->key))
       return true;
     return false;
   }
@@ -85,6 +85,8 @@ class TwoFactor
    * Verify if user Two Factor is authenticated
    *
    * @param $user
+   * @param $secret
+   *
    * @return bool
    */
   public function verifyKey($user, $secret)
@@ -94,7 +96,7 @@ class TwoFactor
       return false;
     }
 
-    $valid = $this->google2fa->verifyKey($user->secret()->key, $secret);
+   // $valid = $this->google2fa->verifyKey($user->secret->key, $secret);
 
     return true;
   }
