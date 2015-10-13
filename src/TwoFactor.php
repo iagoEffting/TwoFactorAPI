@@ -115,7 +115,6 @@ class TwoFactor
     // Verifica no access
 
     return false;
-
   }
 
 }
