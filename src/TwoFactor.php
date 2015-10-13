@@ -38,7 +38,7 @@ class TwoFactor
     $secret->key = TwoFactor::generateKey();
 
     try {
-      $user->secret()->save($secret);
+      $user->secret()->updateOrCreate(['user_id' => $user->id], $secret->toArray());
     } catch (Exception $e) {
       $error = [
         'error' => $e->getMessage()
@@ -46,7 +46,7 @@ class TwoFactor
 
       return $error;
     }
-    
+
     return $user;
   }
 
@@ -95,7 +95,6 @@ class TwoFactor
     }
 
     $valid = $this->google2fa->verifyKey($user->secret()->key, $secret);
-    dd($valid);
 
     return true;
   }
