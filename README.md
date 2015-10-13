@@ -11,11 +11,11 @@ How does it work: https://www.google.com/landing/2step/#tab=how-it-works
 
 ## Installing
 ### 1. Dependency
-````
+```
 composer require iago-effting/two-factor-api
 ```
 or manually
-````
+```
 {
     "require": {
         "iago-effting/two-factor-api": "dev-master"
@@ -34,15 +34,13 @@ IagoEffting\TwoFactorAPI\Providers\TwoFactorApiServiceProvider::class
 
 ### 3. Middleware
 Add middleware to your `app\Http\kernel.php` in variable `$routeMiddleware`
-``
+```
 // Access using TwoFactor
 'needTwoFactor' => \IagoEffting\TwoFactorAPI\Middleware\TwoFactorAuthenticate::class,
 ```
-
 ### 4. User Class
 On your User class, add the trait IagoEffting\TwoFactorAPI\Traits\HasTwoFacto to enable the creation of secret key:
-
-````
+```
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
@@ -76,17 +74,16 @@ php artisan migrate
 Generate secret key
 ```
 TwoFactor::generateKey();
-#=> 53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5
+=> 53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5
 ```
 
 Generate QR Code for synchronize in your Google Authentica
 ```
 TwoFactor::generateQrCode(['mail' => 'iago.effting@gmail.com', 'key' => '53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5'])
-#=> https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2FiNeural%3Aiago2222marina%40gmail.com%3Fsecret%3D53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5%26issuer%3DiNeural
+=> https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2FiNeural%3Aiago2222marina%40gmail.com%3Fsecret%3D53TNJZF7GYDKJ2EEOWWZM7KFRMJJMJB5%26issuer%3DiNeural
 ```
 
 Attach in a User
-
 ```
 $secret = new Secret();
 $secret->key = TwoFactor::generateKey();
