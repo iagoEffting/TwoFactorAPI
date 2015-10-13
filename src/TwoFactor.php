@@ -3,6 +3,7 @@
 namespace IagoEffting\TwoFactorAPI;
 
 
+use Faker\Provider\DateTime;
 use Mockery\CountValidator\Exception;
 
 class TwoFactor
@@ -31,6 +32,7 @@ class TwoFactor
    * If not enabled, it will not need to login
    *
    * @param $user
+   * @return bool
    */
   public function activate($user)
   {
@@ -112,9 +114,18 @@ class TwoFactor
   public function verifyAuthenticate($user)
   {
 
-    // Verifica no access
+    $session_expire = config('twofactor.session_expire');
 
-    return false;
+    $date = $user->access->created_at->diff(new \DateTime('NOW'))->format("%i");
+    $time = (int) $date;
+
+    if ($time >= $session_expire) {
+      dd($session_expire);
+      return false;
+    }
+
+
+    return true;
   }
 
 }

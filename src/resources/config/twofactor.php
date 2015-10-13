@@ -26,4 +26,9 @@ return [
    * Default Secret length used by Google TwoFactor.
    */
   'secret_length' => 32,
+
+  /*
+   * Default Time to expire the authentication in minutos
+   */
+  'session_expire' => 30
 ];
