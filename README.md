@@ -30,7 +30,16 @@ IagoEffting\TwoFactorAPI\Providers\TwoFactorApiServiceProvider::class
 ...
 'TwoFactor'  => \IagoEffting\TwoFactorAPI\Facades\TwoFactor::class
 ```
-### 3. User Class
+
+
+### 3. Middleware
+Add middleware to your `app\Http\kernel.php` in variable `$routeMiddleware`
+``
+// Access using TwoFactor
+'needTwoFactor' => \IagoEffting\TwoFactorAPI\Middleware\TwoFactorAuthenticate::class,
+```
+
+### 4. User Class
 On your User class, add the trait IagoEffting\TwoFactorAPI\Traits\HasTwoFacto to enable the creation of secret key:
 
 ````
@@ -51,7 +60,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 ...
 ```
 
-### 4. Publishing configuration file and migrations
+### 5. Publishing configuration file and migrations
 Publish the configs and migrates
 ````
 php artisan vendor:publish
