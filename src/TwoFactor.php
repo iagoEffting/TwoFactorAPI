@@ -82,7 +82,7 @@ class TwoFactor
   }
 
   /**
-   * Verify if user Two Factor is authenticated
+   * Verify if secret register is equals the secret generate of google authenticator
    *
    * @param $user
    * @param $secret
@@ -96,9 +96,26 @@ class TwoFactor
       return false;
     }
 
-   // $valid = $this->google2fa->verifyKey($user->secret->key, $secret);
+    if(!$this->google2fa->verifyKey($user->secret->key, $secret)) {
+      return false;
+    }
 
     return true;
+  }
+
+  /**
+   * Verify if user TwoFactor is authenticated
+   *
+   * @param $user
+   * @return bool
+   */
+  public function verifyAuthenticate($user)
+  {
+
+    // Verifica no access
+
+    return false;
+
   }
 
 }
