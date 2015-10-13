@@ -62,7 +62,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 ### 5. Publishing configuration file and migrations
 Publish the configs and migrates
-````
+```
 php artisan vendor:publish
 ```
 
