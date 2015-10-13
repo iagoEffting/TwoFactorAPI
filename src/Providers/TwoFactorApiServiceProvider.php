@@ -32,8 +32,8 @@ class TwoFactorApiServiceProvider extends ServiceProvider
   public function boot()
   {
     $this->publishes([
-      __DIR__. '/../resources/migrations/2015_09_08_000000_create_secret_user_table.php' => base_path('database/migrations/2015_09_08_000000_create_secret_user_table.php'),
-      __DIR__. '/../resources/migrations/2015_09_08_000000_create_access_user_table.php' => base_path('database/migrations/2015_09_08_000000_create_access_user_table.php'),
+      __DIR__. '/../resources/migrations/2015_09_08_000000_create_twofactor_secret_user_table.php' => base_path('database/migrations/2015_09_08_000000_create_twofactor_secret_user_table.php'),
+      __DIR__. '/../resources/migrations/2015_09_08_000000_create_twofactor_access_user_table.php' => base_path('database/migrations/2015_09_08_000000_create_twofactor_access_user_table.php'),
       __DIR__. '/../resources/config/twofactor.php' => base_path('config/twofactor.php')
     ]);
   }

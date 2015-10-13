@@ -30,13 +30,15 @@ class TwoFactorAuthenticate
     $user = $this->auth->toUser($request->input('token'));
 
     // Validar TwoFactor
-    if (!$this->twoFactor->verifyKey($user)) {
-      $data = array(
-        'ExceptionValidateTwoFactor' => 'Not Validate',
-        'urlValidate' => url("api/v1/two-factor/create")
-      );
+    if ($this->twoFactor->isEnable($user)) {
+      if (!$this->twoFactor->verifyKey($user)) {
+        $data = array(
+          'ExceptionValidateTwoFactor' => 'Not Validate',
+          'urlCreate' => url("api/v1/two-factor/create")
+        );
 
-      return response()->json($data);
+        return response()->json($data);
+      }
     }
 
     return $next($request);

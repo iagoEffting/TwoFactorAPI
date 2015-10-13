@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserSecretsTable extends Migration
+class CreateTwofactorSecretUserTable extends Migration
 {
   /**
    * Run the migrations.
@@ -12,7 +12,7 @@ class CreateUserSecretsTable extends Migration
    */
   public function up()
   {
-    Schema::create('user_secrets', function (Blueprint $table) {
+    Schema::create('secret_user', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('user_id');
       $table->string('key')->index();

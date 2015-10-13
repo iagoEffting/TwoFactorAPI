@@ -12,7 +12,7 @@ class Secret extends Model
    *
    * @var string
    */
-  protected $table = 'user_secrets';
+  protected $table = 'secret_user';
 
   /**
    * The attributes that are mass assignable.
@@ -23,6 +23,7 @@ class Secret extends Model
 
   public function user()
   {
+
     $userModel = config('twofactor.user_model');
     return $this->belongsTo($userModel);
   }

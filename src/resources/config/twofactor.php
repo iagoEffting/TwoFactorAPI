@@ -13,6 +13,11 @@ return [
   'secret_model' => 'IagoEffting\TwoFactorAPI\Secret',
 
   /*
+   * Default Secret model used by TwoFactor.
+   */
+   'access_model' => 'IagoEffting\TwoFactorAPI\Access',
+
+  /*
    * Default User model used by Laravel.
    */
   'user_model' => 'App\User',

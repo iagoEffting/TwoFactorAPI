@@ -11,4 +11,10 @@ trait HasTwoFactor
     return $this->hasOne($secret_model);
   }
 
+  public function access()
+  {
+    $access_model = config('twofactor.access_model');
+    return $this->hasOne($access_model);
+  }
+
 }
