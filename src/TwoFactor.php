@@ -114,14 +114,15 @@ class TwoFactor
   public function verifyAuthenticate($user)
   {
 
-    $session_expire = config('twofactor.session_expire');
+    if (isset($user->access)) {
+      $session_expire = config('twofactor.session_expire');
 
-    $date = $user->access->created_at->diff(new \DateTime('NOW'))->format("%i");
-    $time = (int) $date;
+      $date = $user->access->created_at->diff(new \DateTime('NOW'))->format("%i");
+      $time = (int)$date;
 
-    if ($time >= $session_expire) {
-      dd($session_expire);
-      return false;
+      if ($time >= $session_expire) {
+        return false;
+      }
     }
 
 
