@@ -14,6 +14,8 @@ class AccessRepository
     $access->browser = 'chrome';
 
     $user->access()->save($access);
+
+    return $user;
   }
 
 }

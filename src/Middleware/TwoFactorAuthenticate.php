@@ -33,7 +33,7 @@ class TwoFactorAuthenticate
       if (!$this->twoFactor->verifyAuthenticate($user)) {
         $data = array(
           'ExceptionValidateTwoFactor' => 'Not Validate',
-          'urlCreate' => url("api/v1/two-factor/create?token=".$request->input('token'))
+          'urlCreate' => url("api/v1/two-factor/authenticate?token=".$request->input('token'))
         );
 
         return response()->json($data);

@@ -2,8 +2,6 @@
 
 namespace IagoEffting\TwoFactorAPI;
 
-
-use Faker\Provider\DateTime;
 use Mockery\CountValidator\Exception;
 
 class TwoFactor
@@ -60,8 +58,9 @@ class TwoFactor
    */
   public function isEnable($user)
   {
-    if (isset($user->secret->key))
+    if (isset($user->secret->key)){
       return true;
+    }
     return false;
   }
 
@@ -98,11 +97,7 @@ class TwoFactor
       return false;
     }
 
-    if(!$this->google2fa->verifyKey($user->secret->key, $secret)) {
-      return false;
-    }
-
-    return true;
+    return $this->google2fa->verifyKey($user->secret->key, $secret);
   }
 
   /**
@@ -114,19 +109,18 @@ class TwoFactor
   public function verifyAuthenticate($user)
   {
 
-    if (isset($user->access)) {
+    if ($user->access) {
+
       $session_expire = config('twofactor.session_expire');
+      $time = (int) $user->access->created_at->diff(new \DateTime('NOW'))->format("%i");
 
-      $date = $user->access->created_at->diff(new \DateTime('NOW'))->format("%i");
-      $time = (int)$date;
-
-      if ($time >= $session_expire) {
-        return false;
+      if ($time <= $session_expire) {
+        return true;
       }
+
     }
 
-
-    return true;
+    return false;
   }
 
 }
