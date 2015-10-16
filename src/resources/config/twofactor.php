@@ -2,33 +2,36 @@
 
 
 return [
-  /*
-   * This name will appear on Google Autenticator app on your phone
-   */
-  'company_name' => 'Name of Your Company',
 
-  /*
-   * Default Secret model used by TwoFactor.
-   */
-  'secret_model' => 'IagoEffting\TwoFactorAPI\Secret',
+        /*
+         * This name will appear on Google Autenticator app on your phone
+         */
+        'company_name' => 'Name of Your Company',
 
-  /*
-   * Default Secret model used by TwoFactor.
-   */
-   'access_model' => 'IagoEffting\TwoFactorAPI\Access',
+        /*
+         * Default Secret model used by TwoFactor.
+         */
+        'secret_model' => 'IagoEffting\TwoFactorAPI\Secret',
 
-  /*
-   * Default User model used by Laravel.
-   */
-  'user_model' => 'App\User',
+        /*
+         * Default Secret model used by TwoFactor.
+         */
+        'access_model' => 'IagoEffting\TwoFactorAPI\Access',
 
-  /*
-   * Default Secret length used by Google TwoFactor.
-   */
-  'secret_length' => 32,
+        /*
+         * Default User model used by Laravel.
+         */
+        'user_model' => 'App\User',
 
-  /*
-   * Default Time to expire the authentication in minutos
-   */
-  'session_expire' => 30
+        /*
+         * Default Secret length used by Google TwoFactor.
+         */
+        'secret_length' => 32,
+
+        /*
+         * Default Time to expire the authentication in minutos
+         */
+        'session_expire' => 30
+
 ];
+
