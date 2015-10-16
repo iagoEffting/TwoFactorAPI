@@ -97,7 +97,11 @@ class TwoFactor
       return false;
     }
 
-    return $this->google2fa->verifyKey($user->secret->key, $secret);
+    if(!$this->google2fa->verifyKey($user->secret->key, $secret)) {
+      return false;
+    }
+
+    return true;
   }
 
   /**
