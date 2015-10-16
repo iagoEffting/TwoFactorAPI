@@ -145,13 +145,13 @@ class TwoFactor
     {
 
         if ($user->access === true) {
-            $session_expire = config('twofactor.session_expire');
+            $sessionExpire = config('twofactor.session_expire');
 
             $dateNow = new \DateTime('NOW');
 
             $time = (int) $user->access->created_at->diff($dateNow)->format("%i");
 
-            if ($time <= $session_expire) {
+            if ($time <= $sessionExpire) {
                 return true;
             }
         }
