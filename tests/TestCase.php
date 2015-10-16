@@ -1,9 +1,11 @@
 <?php
 
+namespace IagoEffting\TwoFactorAPITest;
+
 /**
  * Class TestCase
  */
-class TestCase extends Illuminate\Foundation\Testing\TestCase
+class TestCase extends \Illuminate\Foundation\Testing\TestCase
 {
 
     /**
@@ -22,7 +24,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     {
         $app = include __DIR__.'/../bootstrap/app.php';
 
-        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+        $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
 

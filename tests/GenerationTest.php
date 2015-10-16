@@ -1,5 +1,7 @@
 <?php
 
+namespace IagoEffting\TwoFactorAPITest;
+
 /**
  * Class GenerationTest
  */
@@ -19,7 +21,7 @@ class GenerationTest extends TestCase
     {
         parent::setUp();
 
-        $faker = Faker\Factory::create();
+        $faker = \Faker\Factory::create();
 
         $this->twoFactor = new \IagoEffting\TwoFactorAPI\TwoFactor();
 

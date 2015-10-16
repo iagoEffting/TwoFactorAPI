@@ -2,7 +2,6 @@
 
 namespace IagoEffting\TwoFactorAPI;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 /**
