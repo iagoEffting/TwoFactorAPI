@@ -22,7 +22,6 @@ class GenerationTest extends TestCase
         $faker = Faker\Factory::create();
 
         $this->twoFactor = new \IagoEffting\TwoFactorAPI\TwoFactor();
-        app()->instance('TwoFactor', $this->twoFactor);
 
         $email = $faker->email;
 
@@ -41,7 +40,7 @@ class GenerationTest extends TestCase
      */
     function testGenerateKeyIsNotEmpty()
     {
-        $this->assertNotEmpty(TwoFactor::generateKey());
+        $this->assertNotEmpty($this->twoFactor->generateKey());
 
     }
 
@@ -53,7 +52,7 @@ class GenerationTest extends TestCase
      */
     public function testKeyHaveNumberOfStrengthSecret()
     {
-        $numberOfChars  = strlen(TwoFactor::generateKey());
+        $numberOfChars  = strlen($this->twoFactor->generateKey());
         $lengthOfSecret = 32;
         $this->assertEquals($lengthOfSecret, $numberOfChars);
 
@@ -67,7 +66,7 @@ class GenerationTest extends TestCase
      */
     function testGenerateQrCodeIsNotNull()
     {
-        $this->assertNotEmpty(TwoFactor::generateQrCode($this->data));
+        $this->assertNotEmpty($this->twoFactor->generateQrCode($this->data));
 
     }
 
@@ -81,7 +80,10 @@ class GenerationTest extends TestCase
         $mail      = urlencode($this->data['mail']);
         $urlQrCode = "https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2F{$company}%3A{$mail}%3Fsecret%3D{$this->data['key']}%26issuer%3D$company";
 
-        $this->assertContains(TwoFactor::generateQrCode($this->data), $urlQrCode);
+        $this->assertContains(
+            $this->twoFactor->generateQrCode($this->data),
+            $urlQrCode
+        );
     }
 
     /**
