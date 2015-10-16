@@ -38,7 +38,7 @@ class GenerationTest extends TestCase
      *
      * @return void
      */
-    function testGenerateKeyIsNotEmpty()
+    public function testGenerateKeyIsNotEmpty()
     {
         $this->assertNotEmpty($this->twoFactor->generateKey());
 
@@ -64,7 +64,7 @@ class GenerationTest extends TestCase
      *
      * @return void
      */
-    function testGenerateQrCodeIsNotNull()
+    public function testGenerateQrCodeIsNotNull()
     {
         $this->assertNotEmpty($this->twoFactor->generateQrCode($this->data));
 
@@ -74,7 +74,7 @@ class GenerationTest extends TestCase
     /**
      * Test if qr is empty
      */
-    function testGenerateUrlQrCodeIsNotEmpty()
+    public function testGenerateUrlQrCodeIsNotEmpty()
     {
         $company   = config('twofactor.company_name');
         $mail      = urlencode($this->data['mail']);
