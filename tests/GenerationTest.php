@@ -36,7 +36,7 @@ class GenerationTest extends TestCase
 
 
     /**
-     * Testing Key
+     * @covers TwoFactor::generateKey
      *
      * @return void
      */
@@ -49,6 +49,8 @@ class GenerationTest extends TestCase
 
     /**
      * Test secret strength
+     *
+     * @covers TwoFactor::generateKey
      *
      * @return void
      */
@@ -64,6 +66,8 @@ class GenerationTest extends TestCase
     /**
      * Test QR URL
      *
+     * @covers TwoFactor::generateQrCode
+     *
      * @return void
      */
     public function testGenerateQrCodeIsNotNull()
@@ -75,6 +79,9 @@ class GenerationTest extends TestCase
 
     /**
      * Test if qr is empty
+     *
+     * @covers TwoFactor::generateQrCode
+     *
      */
     public function testGenerateUrlQrCodeIsNotEmpty()
     {
