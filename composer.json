@@ -10,7 +10,8 @@
     ],
     "autoload": {
       "psr-4": {
-        "IagoEffting\\TwoFactorAPI\\" : "src/"
+        "IagoEffting\\TwoFactorAPI\\" : "src/",
+        "IagoEffting\\TwoFactorTestAPI\\" : "tests/"
       }
     },
     "require": {

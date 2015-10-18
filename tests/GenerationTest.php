@@ -1,11 +1,13 @@
 <?php
 
-namespace IagoEffting\TwoFactorAPITest;
+namespace IagoEffting\TwoFactorTestAPI;
+
+use IagoEffting\TwoFactorTestAPI\TestCase as TestCaseA;
 
 /**
  * Class GenerationTest
  */
-class GenerationTest extends TestCase
+class GenerationTest extends TestCaseA
 {
 
     protected $twoFactor;

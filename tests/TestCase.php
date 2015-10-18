@@ -1,6 +1,6 @@
 <?php
 
-namespace IagoEffting\TwoFactorAPITest;
+namespace IagoEffting\TwoFactorTestAPI;
 
 /**
  * Class TestCase
