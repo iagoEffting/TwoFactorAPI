@@ -4,9 +4,6 @@ namespace IagoEffting\TwoFactorTestAPI;
 
 use IagoEffting\TwoFactorTestAPI\TestCase as TestCaseA;
 
-/**
- * Class GenerationTest
- */
 class GenerationTest extends TestCaseA
 {
 
@@ -14,11 +11,6 @@ class GenerationTest extends TestCaseA
     protected $data = [];
 
 
-    /**
-     * Configuration test
-     *
-     * @return void
-     */
     public function setUp()
     {
         parent::setUp();
@@ -34,13 +26,12 @@ class GenerationTest extends TestCaseA
                        'key'  => strtoupper(str_random(32)),
                       ];
 
+
     }
 
 
     /**
      * @covers TwoFactor::generateKey
-     *
-     * @return void
      */
     public function testGenerateKeyIsNotEmpty()
     {
@@ -50,11 +41,7 @@ class GenerationTest extends TestCaseA
 
 
     /**
-     * Test secret strength
-     *
      * @covers TwoFactor::generateKey
-     *
-     * @return void
      */
     public function testKeyHaveNumberOfStrengthSecret()
     {
@@ -66,11 +53,7 @@ class GenerationTest extends TestCaseA
 
 
     /**
-     * Test QR URL
-     *
      * @covers TwoFactor::generateQrCode
-     *
-     * @return void
      */
     public function testGenerateQrCodeIsNotNull()
     {
@@ -80,10 +63,7 @@ class GenerationTest extends TestCaseA
 
 
     /**
-     * Test if qr is empty
-     *
      * @covers TwoFactor::generateQrCode
-     *
      */
     public function testGenerateUrlQrCodeIsNotEmpty()
     {
@@ -97,11 +77,7 @@ class GenerationTest extends TestCaseA
         );
     }
 
-    /**
-     * Destructor Data
-     *
-     * @return void
-     */
+
     public function tearDown()
     {
         parent::tearDown();

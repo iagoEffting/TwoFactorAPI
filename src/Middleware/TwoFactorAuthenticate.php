@@ -6,10 +6,6 @@ use Closure;
 use IagoEffting\TwoFactorAPI\TwoFactor as TwoFactorApi;
 use Tymon\JWTAuth\JWTAuth;
 
-/**
- * Class TwoFactorAuthenticate
- * @package IagoEffting\TwoFactorAPI\Middleware
- */
 class TwoFactorAuthenticate
 {
 
@@ -17,10 +13,6 @@ class TwoFactorAuthenticate
     protected $twoFactor;
 
 
-    /**
-     * @param JWTAuth $auth
-     * @param TwoFactor $twoFactor
-     */
     public function __construct(JWTAuth $auth, TwoFactorApi $twoFactor)
     {
 
@@ -44,11 +36,13 @@ class TwoFactorAuthenticate
 
         if ($this->twoFactor->isEnable($user) === true) {
             if ($this->twoFactor->verifyAuthenticate($user) === false) {
-                $data = [
-                         'Exceptions' => 'Not Validate',
-                         'urlCreate'  =>
-                             url("api/v1/two-factor/authenticate?token=".$request->input('token'))
-                        ];
+                $token = $request->input('token');
+                $data  = [
+                          'Exceptions' => 'Not Validate',
+                          'urlCreate'  => url(
+                              "api/v1/two-factor/authenticate?token=".$token
+                          ),
+                         ];
 
                 return response()->json($data);
 

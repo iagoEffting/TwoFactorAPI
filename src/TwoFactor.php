@@ -4,9 +4,6 @@ namespace IagoEffting\TwoFactorAPI;
 
 use Mockery\CountValidator\Exception;
 
-/**
- * Class TwoFactor
- */
 class TwoFactor
 {
 
@@ -17,9 +14,6 @@ class TwoFactor
     protected $google2fa;
 
 
-    /**
-     * Initialize all class
-     */
     public function __construct()
     {
         $this->google2fa = app()->make('PragmaRX\Google2FA\Contracts\Google2FA');
@@ -41,19 +35,10 @@ class TwoFactor
 
     }
 
-    /**
-
-     *
-     * @param $user
-     * @return bool
-     */
 
     /**
-     * Activate TwoFactor. If not enabled, it will not need to login
-     *
-     * @param $user User
-     *
-     * @return array
+     * Activate TwoFactor.
+     * If not enabled, it will not need to login
      */
     public function activate($user)
     {
@@ -76,11 +61,6 @@ class TwoFactor
     }
 
 
-    /**
-     * @param $user
-     *
-     * @return bool
-     */
     public function isEnable($user)
     {
         if ($user->secret->key === true) {
@@ -92,11 +72,6 @@ class TwoFactor
     }
 
 
-    /**
-     * Generate a URL of qrCode()
-     *
-     * @param array $data
-     */
     public function generateQrCode(array $data)
     {
         $companyName = config('twofactor.company_name');
@@ -115,11 +90,6 @@ class TwoFactor
     /**
      * Verify if secret register is equals the secret
      * generate of google authenticator
-     *
-     * @param $user
-     * @param $secret
-     *
-     * @return bool
      */
     public function verifyKey($user, $secret)
     {
@@ -135,12 +105,7 @@ class TwoFactor
         return true;
     }
 
-    /**
-     * Verify if user TwoFactor is authenticated
-     *
-     * @param $user
-     * @return bool
-     */
+
     public function verifyAuthenticate($user)
     {
 

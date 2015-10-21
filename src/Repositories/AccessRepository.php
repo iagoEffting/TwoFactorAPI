@@ -2,19 +2,10 @@
 
 namespace IagoEffting\TwoFactorAPI\Repositories;
 
-/**
- * Class AccessRepository
- * @package IagoEffting\TwoFactorAPI\Repositories
- */
 class AccessRepository
 {
 
 
-    /**
-     * @param $user
-     *
-     * @return mixed
-     */
     public function create($user)
     {
         $accessEntity = config('twofactor.access_model');

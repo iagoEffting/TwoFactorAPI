@@ -2,18 +2,10 @@
 
 namespace IagoEffting\TwoFactorAPI\Traits;
 
-/**
- * Class HasTwoFactor
- * @package IagoEffting\TwoFactorAPI\Traits
- */
 trait HasTwoFactor
 {
 
 
-    /**
-     * Relation with secret
-     * @return mixed
-     */
     public function secret()
     {
         $secretModel = config('twofactor.secret_model');
@@ -23,10 +15,6 @@ trait HasTwoFactor
     }
 
 
-    /**
-     * Relation with access
-     * @return mixed
-     */
     public function access()
     {
         $accessModel = config('twofactor.access_model');
