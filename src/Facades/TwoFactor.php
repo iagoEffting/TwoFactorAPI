@@ -8,10 +8,6 @@ class TwoFactor extends Facade
 {
 
 
-    /**
-     * Accessor name of Facade
-     * @return string
-     */
     protected static function getFacadeAccessor()
     {
 
