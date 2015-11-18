@@ -28,8 +28,7 @@ class TwoFactor
     public function generateKey()
     {
         $secretLength = config('twofactor.secret_length');
-
-        $secret = $this->google2fa->generateSecretKey($secretLength);
+        $secret       = $this->google2fa->generateSecretKey($secretLength);
 
         return $secret;
 
@@ -110,15 +109,15 @@ class TwoFactor
     {
 
         if ($user->access === true) {
-            $sessionExpire = config('twofactor.session_expire');
+            return false;
+        }
 
-            $dateNow = new \DateTime('NOW');
+        $sessionExpire  = config('twofactor.session_expire');
+        $dateNow        = new \DateTime('NOW');
+        $time           = (int) $user->access->created_at->diff($dateNow)->format("%i");
 
-            $time = (int) $user->access->created_at->diff($dateNow)->format("%i");
-
-            if ($time <= $sessionExpire) {
-                return true;
-            }
+        if ($time <= $sessionExpire) {
+            return true;
         }
 
         return false;

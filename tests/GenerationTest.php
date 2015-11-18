@@ -15,17 +15,14 @@ class GenerationTest extends TestCaseA
     {
         parent::setUp();
 
-        $faker = \Faker\Factory::create();
-
+        $faker           = \Faker\Factory::create();
         $this->twoFactor = new \IagoEffting\TwoFactorAPI\TwoFactor();
-
-        $email = $faker->email;
+        $email           = $faker->email;
 
         $this->data = [
                        'mail' => $email,
                        'key'  => strtoupper(str_random(32)),
                       ];
-
 
     }
 

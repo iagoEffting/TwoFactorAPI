@@ -26,19 +26,20 @@ class TwoFactorAuthenticate
     {
         $user = $this->auth->toUser($request->input('token'));
 
-        if ($this->twoFactor->isEnable($user) === true) {
-            if ($this->twoFactor->verifyAuthenticate($user) === false) {
-                $token = $request->input('token');
-                $data  = [
-                          'Exceptions' => 'Not Validate',
-                          'urlCreate'  => url(
-                              "api/v1/two-factor/authenticate?token=".$token
-                          ),
-                         ];
+        if ($this->twoFactor->isEnable($user) === false) {
+            return $next($request);
+        }
 
-                return response()->json($data);
+        if ($this->twoFactor->verifyAuthenticate($user) === false) {
+            $token = $request->input('token');
+            $data  = [
+                      'Exceptions' => 'Not Validate',
+                      'urlCreate'  => url(
+                          "api/v1/two-factor/authenticate?token=".$token
+                      ),
+                     ];
 
-            }
+            return response()->json($data);
         }
 
         return $next($request);

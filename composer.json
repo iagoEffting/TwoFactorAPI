@@ -16,7 +16,8 @@
     },
     "require": {
       "illuminate/support": "~5",
-      "pragmarx/google2fa": "*"
+      "pragmarx/google2fa": "*",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
       "fzaninotto/faker": "~1.4",
